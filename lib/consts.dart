@@ -54,3 +54,6 @@ TextStyle searchBarHintTextStyle = TextStyle(
   fontFamily: 'SegoeUI',
   fontWeight: FontWeight.normal,
 );
+
+TextStyle hotelCardSubTextStyle = TextStyle(
+    color: secondaryColor, fontSize: 12, fontWeight: FontWeight.normal);

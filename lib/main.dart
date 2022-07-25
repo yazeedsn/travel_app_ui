@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/consts.dart';
-import 'package:travel_app/screens/travel_screen.dart';
+import 'package:travel_app/screens/main_screen.dart';
 import 'package:travel_app/screens/welcome_screen.dart';
 import 'package:travel_app/screens/signin_screen.dart';
 import 'package:travel_app/screens/signup_screen.dart';
@@ -24,13 +23,13 @@ class MyApp extends StatelessWidget {
           inputDecorationTheme: inputDecorationTheme,
           textButtonTheme: textButtonThemeData,
           bottomNavigationBarTheme: bottomNavigationBarTheme),
-      initialRoute: '/signin/travel',
+      initialRoute: '/signin/main',
       routes: {
         '/': (context) => const WelcomeScreen(),
         '/signin': (context) => const SignInScreen(),
         '/signup': (context) => const SignUpScreen(),
         '/reset': (context) => const ResetPasswordScreen(),
-        '/signin/travel': (context) => const TravelScreen(),
+        '/signin/main': (context) => const MainScreen(),
       },
     );
   }
