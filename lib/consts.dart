@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 Color secondaryColor = const Color(0xFF44C7B3);
 Color textColor = const Color(0xFF24253D);
+Color gold = const Color(0xFFFFAA00);
 
 TextStyle welcomeScreenTitleStyle = const TextStyle(
   color: Colors.white,

@@ -4,6 +4,8 @@ import 'package:travel_app/components/horizontal_list.dart';
 import 'package:travel_app/components/top_bar.dart';
 import 'package:travel_app/consts.dart';
 
+import '../components/city_card.dart';
+
 class TravelPage extends StatelessWidget {
   TravelPage({Key? key}) : super(key: key);
 
@@ -85,6 +87,7 @@ class TravelPage extends StatelessWidget {
                     )
                   ],
                 ),
+                card: const CityCard(name: 'Vienna'),
               ),
             ),
           )

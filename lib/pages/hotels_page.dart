@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/components/city_card.dart';
 import 'package:travel_app/components/horizontal_list.dart';
 import 'package:travel_app/components/top_bar.dart';
 import 'package:travel_app/components/offer_card.dart';
 import 'package:travel_app/consts.dart';
 
-class FlightsPage extends StatelessWidget {
-  const FlightsPage({Key? key}) : super(key: key);
+import '../components/city_card.dart';
+
+class HotelsPage extends StatelessWidget {
+  const HotelsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +17,8 @@ class FlightsPage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: TopBar(
-            title: 'Flights',
-            searchText: 'Search Your Favourite Place',
+            title: 'Hotels',
+            searchText: 'Where to go?',
           ),
         ),
       ),
@@ -26,11 +27,11 @@ class FlightsPage extends StatelessWidget {
         child: HorizontalList(
           padding: const EdgeInsets.only(left: 20, top: 16),
           title: Text(
-            'Popular Destinations',
+            'Near You',
             style: headerStyle,
           ),
-          card: const CityCard(
-            name: 'Vienna',
+          card: CityCard(
+            name: 'Paris',
           ),
         ),
       ),
@@ -64,11 +65,15 @@ class FlightsPage extends StatelessWidget {
       Expanded(
         flex: 3,
         child: HorizontalList(
-            padding: const EdgeInsets.only(left: 20, top: 16),
-            title: Text(
-              'Top Cities',
-              style: headerStyle,
-            ), card: CityCard(name: 'Paris',),),
+          padding: const EdgeInsets.only(left: 20, top: 16),
+          title: Text(
+            'Top Hotels',
+            style: headerStyle,
+          ),
+          card: CityCard(
+            name: 'Paris',
+          ),
+        ),
       )
     ]);
   }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/consts.dart';
-import 'package:travel_app/pages/flights_page.dart';
+import 'package:travel_app/pages/profile_page.dart';
 import 'package:travel_app/pages/travel_page.dart';
-import 'package:travel_app/components/city_card.dart';
+import 'package:travel_app/pages/flights_page.dart';
+import 'package:travel_app/pages/hotels_page.dart';
+import 'package:travel_app/screens/hotel_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -13,7 +15,13 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _pageIndex = 0;
-  final pages = <Widget>[TravelPage(), const FlightsPage()];
+  final pages = <Widget>[
+    TravelPage(),
+    const FlightsPage(),
+    const SizedBox(),
+    const HotelsPage(),
+    const ProfilePage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +32,10 @@ class _MainScreenState extends State<MainScreen> {
         padding: const EdgeInsets.only(top: 14.0),
         child: FloatingActionButton(
           backgroundColor: secondaryColor,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => HotelScreen()));
+          },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
