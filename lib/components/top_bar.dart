@@ -12,45 +12,48 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(title, style: headerStyle),
-            Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.rotationY(math.pi),
-                child: const Icon(
-                  FontAwesomeIcons.sliders,
-                  color: Color(0xFF404040),
-                )),
-          ],
-        ),
-        const SizedBox(height: 20),
-        Container(
-          decoration: BoxDecoration(boxShadow: [
-            BoxShadow(
-              offset: const Offset(0, 13),
-              color: Colors.black.withOpacity(0.09),
-              blurRadius: 31,
-            ),
-          ]),
-          child: TextField(
-            decoration: InputDecoration(
-                fillColor: Colors.white,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-                prefixIcon: const Icon(Icons.search, size: 25),
-                border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(26)),
-                hintText: searchText,
-                hintStyle: searchBarHintTextStyle),
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 26, bottom: 35),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(title, style: headerStyle),
+              Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.rotationY(math.pi),
+                  child: const Icon(
+                    FontAwesomeIcons.sliders,
+                    color: Color(0xFF404040),
+                  )),
+            ],
           ),
-        ),
-      ],
+          const SizedBox(height: 20),
+          Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                offset: const Offset(0, 13),
+                color: Colors.black.withOpacity(0.09),
+                blurRadius: 31,
+              ),
+            ]),
+            child: TextField(
+              decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+                  prefixIcon: const Icon(Icons.search, size: 25),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(26)),
+                  hintText: searchText,
+                  hintStyle: searchBarHintTextStyle),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

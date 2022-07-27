@@ -3,13 +3,13 @@ import 'consts.dart';
 
 final outlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-        primary: Colors.white,
-        backgroundColor: secondaryColor,
-        padding: const EdgeInsets.all(18),
-        textStyle: outlinedButtonTextStyle,
-        side: BorderSide.none,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(28))));
+  primary: Colors.white,
+  backgroundColor: secondaryColor,
+  padding: const EdgeInsets.all(18),
+  textStyle: outlinedButtonTextStyle,
+  side: BorderSide.none,
+  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+));
 
 final inputDecorationTheme = InputDecorationTheme(
   filled: true,

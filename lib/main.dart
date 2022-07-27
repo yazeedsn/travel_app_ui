@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           inputDecorationTheme: inputDecorationTheme,
           textButtonTheme: textButtonThemeData,
           bottomNavigationBarTheme: bottomNavigationBarTheme),
-      initialRoute: '/signin/main',
+      initialRoute: '/',
       routes: {
         '/': (context) => const WelcomeScreen(),
         '/signin': (context) => const SignInScreen(),

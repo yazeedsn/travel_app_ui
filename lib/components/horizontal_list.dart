@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'city_card.dart';
 
 class HorizontalList extends StatelessWidget {
   const HorizontalList(
@@ -15,14 +14,14 @@ class HorizontalList extends StatelessWidget {
     return Padding(
       padding: padding ?? EdgeInsets.zero,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(flex: 2, child: title),
+          title,
+          const SizedBox(height: 14),
           Expanded(
-            flex: 5,
             child: SizedBox(
-              height: 80,
+              height: 10,
               child: ListView.builder(
                 itemCount: 4,
                 scrollDirection: Axis.horizontal,

@@ -7,15 +7,23 @@ class OfferCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.all(Radius.circular(5)),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF6200EE).withOpacity(0.06),
+              offset: const Offset(0, 20),
+              blurRadius: 40,
+            )
+          ]),
       margin: const EdgeInsets.only(right: 20),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: const EdgeInsets.all(14.0),
+            padding: const EdgeInsets.all(15.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5),
               clipBehavior: Clip.antiAlias,

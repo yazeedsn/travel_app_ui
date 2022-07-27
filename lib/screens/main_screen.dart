@@ -4,7 +4,9 @@ import 'package:travel_app/pages/profile_page.dart';
 import 'package:travel_app/pages/travel_page.dart';
 import 'package:travel_app/pages/flights_page.dart';
 import 'package:travel_app/pages/hotels_page.dart';
+import 'package:travel_app/screens/checkout_screen.dart';
 import 'package:travel_app/screens/hotel_screen.dart';
+import 'package:travel_app/screens/rating_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -34,7 +36,7 @@ class _MainScreenState extends State<MainScreen> {
           backgroundColor: secondaryColor,
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => HotelScreen()));
+                MaterialPageRoute(builder: (context) => const HotelScreen()));
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

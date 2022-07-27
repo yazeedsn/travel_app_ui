@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/components/back_navigation_bar.dart';
+import 'package:travel_app/components/shadowed_button.dart';
 import 'package:travel_app/consts.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
@@ -33,7 +35,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       const TextField(
                         decoration: InputDecoration(hintText: 'Email Address'),
                       ),
-                      OutlinedButton(
+                      ShadowedButton(
                           onPressed: () {},
                           child: Text('Reset Your Password'.toUpperCase()))
                     ],
@@ -44,14 +46,7 @@ class ResetPasswordScreen extends StatelessWidget {
             ],
           ),
           SafeArea(
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.arrow_back, color: textColor)),
-            ),
+            child: BackNavigationBar(title: '', color: textColor),
           )
         ],
       ),

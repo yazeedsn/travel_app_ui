@@ -17,31 +17,43 @@ class HotelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
+    return Container(
+      height: 1,
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.all(Radius.circular(13)),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF6200EE).withOpacity(0.06),
+              offset: const Offset(0, 20),
+              blurRadius: 40,
+            )
+          ]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            flex: 1,
+            flex: 12,
             child: Image.asset(
               'assets/images/welcome.png',
               fit: BoxFit.cover,
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 10,
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             name,

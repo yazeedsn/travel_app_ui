@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/components/horizontal_list.dart';
+import 'package:travel_app/components/tagged_hot.dart';
 import 'package:travel_app/components/top_bar.dart';
 import 'package:travel_app/components/offer_card.dart';
 import 'package:travel_app/consts.dart';
 
-import '../components/city_card.dart';
+import 'package:travel_app/components/image_card.dart';
+import 'package:travel_app/screens/hotel_screen.dart';
 
 class HotelsPage extends StatelessWidget {
   const HotelsPage({Key? key}) : super(key: key);
@@ -12,45 +14,37 @@ class HotelsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      const Expanded(
-        flex: 2,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: TopBar(
-            title: 'Hotels',
-            searchText: 'Where to go?',
-          ),
-        ),
+      const TopBar(
+        title: 'Hotels',
+        searchText: 'Where to go?',
       ),
       Expanded(
-        flex: 3,
+        flex: 10,
         child: HorizontalList(
-          padding: const EdgeInsets.only(left: 20, top: 16),
+          padding: const EdgeInsets.only(left: 20, bottom: 14),
           title: Text(
             'Near You',
             style: headerStyle,
           ),
-          card: CityCard(
-            name: 'Paris',
+          card: const ImageCard(
+            padding: EdgeInsets.only(right: 14),
+            tag: 'Paris',
           ),
         ),
       ),
       Expanded(
-          flex: 3,
+          flex: 11,
           child: Padding(
-            padding: const EdgeInsets.only(left: 20, top: 16),
+            padding: const EdgeInsets.only(left: 20, bottom: 14),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    'Popular Offer',
-                    style: headerStyle,
-                  ),
+                Text(
+                  'Popular Offer',
+                  style: headerStyle,
                 ),
+                const SizedBox(height: 14),
                 Expanded(
-                  flex: 3,
                   child: PageView(
                     scrollDirection: Axis.horizontal,
                     children: const [
@@ -63,18 +57,26 @@ class HotelsPage extends StatelessWidget {
             ),
           )),
       Expanded(
-        flex: 3,
+        flex: 10,
         child: HorizontalList(
-          padding: const EdgeInsets.only(left: 20, top: 16),
-          title: Text(
-            'Top Hotels',
-            style: headerStyle,
+          padding: const EdgeInsets.only(left: 20, bottom: 14),
+          title: TaggedHot(
+            child: Text(
+              'Top Hotels',
+              style: headerStyle,
+            ),
           ),
-          card: CityCard(
-            name: 'Paris',
+          card: ImageCard(
+            padding: const EdgeInsets.only(right: 14),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HotelScreen()));
+            },
+            tag: 'Paris',
           ),
         ),
-      )
+      ),
+      const SizedBox(height: 14)
     ]);
   }
 }

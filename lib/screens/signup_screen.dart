@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/components/back_navigation_bar.dart';
+import 'package:travel_app/components/shadowed_button.dart';
 import 'package:travel_app/consts.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -37,7 +39,7 @@ class SignUpScreen extends StatelessWidget {
                               InputDecoration(hintText: 'Email Address')),
                       const TextField(
                           decoration: InputDecoration(hintText: 'Password')),
-                      OutlinedButton(
+                      ShadowedButton(
                           onPressed: () {}, child: const Text('SIGN UP')),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -61,14 +63,7 @@ class SignUpScreen extends StatelessWidget {
             ],
           ),
           SafeArea(
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.arrow_back, color: textColor)),
-            ),
+            child: BackNavigationBar(title: '', color: textColor),
           )
         ],
       ),

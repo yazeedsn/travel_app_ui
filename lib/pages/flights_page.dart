@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/components/city_card.dart';
+import 'package:travel_app/components/image_card.dart';
 import 'package:travel_app/components/horizontal_list.dart';
+import 'package:travel_app/components/tagged_hot.dart';
 import 'package:travel_app/components/top_bar.dart';
 import 'package:travel_app/components/offer_card.dart';
 import 'package:travel_app/consts.dart';
@@ -11,47 +12,41 @@ class FlightsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      const Expanded(
-        flex: 2,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: TopBar(
-            title: 'Flights',
-            searchText: 'Search Your Favourite Place',
-          ),
-        ),
+      const TopBar(
+        title: 'Flights',
+        searchText: 'Search Your Favourite Place',
       ),
       Expanded(
-        flex: 3,
+        flex: 10,
         child: HorizontalList(
-          padding: const EdgeInsets.only(left: 20, top: 16),
+          padding: const EdgeInsets.only(left: 20, bottom: 14),
           title: Text(
             'Popular Destinations',
             style: headerStyle,
           ),
-          card: const CityCard(
-            name: 'Vienna',
+          card: const ImageCard(
+            padding: EdgeInsets.only(right: 14),
+            tag: 'Vienna',
           ),
         ),
       ),
       Expanded(
-          flex: 3,
+          flex: 11,
           child: Padding(
-            padding: const EdgeInsets.only(left: 20, top: 16),
+            padding: const EdgeInsets.only(left: 20.0, bottom: 14),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    'Popular Offer',
-                    style: headerStyle,
-                  ),
+                Text(
+                  'Popular Offer',
+                  style: headerStyle,
                 ),
+                const SizedBox(height: 14),
                 Expanded(
                   flex: 3,
                   child: PageView(
                     scrollDirection: Axis.horizontal,
+                    clipBehavior: Clip.none,
                     children: const [
                       OfferCard(),
                       OfferCard(),
@@ -62,14 +57,21 @@ class FlightsPage extends StatelessWidget {
             ),
           )),
       Expanded(
-        flex: 3,
+        flex: 10,
         child: HorizontalList(
-            padding: const EdgeInsets.only(left: 20, top: 16),
-            title: Text(
-              'Top Cities',
-              style: headerStyle,
-            ), card: CityCard(name: 'Paris',),),
-      )
+          padding: const EdgeInsets.only(left: 20, bottom: 14),
+          title: TaggedHot(
+              child: Text(
+            'Top Cities',
+            style: headerStyle,
+          )),
+          card: const ImageCard(
+            padding: EdgeInsets.only(right: 14),
+            tag: 'Paris',
+          ),
+        ),
+      ),
+      const SizedBox(height: 14)
     ]);
   }
 }

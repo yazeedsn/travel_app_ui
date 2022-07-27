@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/components/back_navigation_bar.dart';
+import 'package:travel_app/components/shadowed_button.dart';
 import 'package:travel_app/consts.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -37,9 +39,9 @@ class SignInScreen extends StatelessWidget {
                       const TextField(
                         decoration: InputDecoration(hintText: "Password"),
                       ),
-                      OutlinedButton(
+                      ShadowedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/signin');
+                            Navigator.pushNamed(context, '/signin/main');
                           },
                           child: const Text('SIGN IN')),
                       TextButton(
@@ -54,16 +56,7 @@ class SignInScreen extends StatelessWidget {
               ],
             ),
           ),
-          SafeArea(
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.arrow_back, color: textColor)),
-            ),
-          )
+          SafeArea(child: BackNavigationBar(title: '', color: textColor)),
         ],
       ),
     );

@@ -15,7 +15,7 @@ TextStyle outlinedButtonTextStyle = const TextStyle(
     color: Colors.white,
     fontSize: 14,
     fontFamily: 'Roboto',
-    fontWeight: FontWeight.w400);
+    fontWeight: FontWeight.w500);
 
 TextStyle titleTextStyle = TextStyle(
   color: textColor,
