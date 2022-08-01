@@ -4,74 +4,100 @@ import 'package:travel_app/components/horizontal_list.dart';
 import 'package:travel_app/components/tagged_hot.dart';
 import 'package:travel_app/components/top_bar.dart';
 import 'package:travel_app/components/offer_card.dart';
+import 'package:travel_app/screens/details_screen.dart';
 import 'package:travel_app/consts.dart';
 
 class FlightsPage extends StatelessWidget {
-  const FlightsPage({Key? key}) : super(key: key);
+  const FlightsPage({Key? key, this.onRequestIndexChange}) : super(key: key);
+  final void Function(int)? onRequestIndexChange;
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      const TopBar(
-        title: 'Flights',
-        searchText: 'Search Your Favourite Place',
-      ),
-      Expanded(
-        flex: 10,
-        child: HorizontalList(
-          padding: const EdgeInsets.only(left: 20, bottom: 14),
-          title: Text(
-            'Popular Destinations',
-            style: headerStyle,
-          ),
-          card: const ImageCard(
-            padding: EdgeInsets.only(right: 14),
-            tag: 'Vienna',
-          ),
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const TopBar(
+          title: 'Flights',
+          searchText: 'Where to go?',
         ),
-      ),
-      Expanded(
-          flex: 11,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, bottom: 14),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Popular Offer',
-                  style: headerStyle,
-                ),
-                const SizedBox(height: 14),
-                Expanded(
-                  flex: 3,
-                  child: PageView(
-                    scrollDirection: Axis.horizontal,
-                    clipBehavior: Clip.none,
-                    children: const [
-                      OfferCard(),
-                      OfferCard(),
-                    ],
-                  ),
-                ),
-              ],
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.19,
+          width: MediaQuery.of(context).size.width,
+          child: HorizontalList(
+            padding: const EdgeInsets.only(left: 30, top: 16),
+            title: Text(
+              'Popular Destinations',
+              style: headerStyle,
             ),
-          )),
-      Expanded(
-        flex: 10,
-        child: HorizontalList(
-          padding: const EdgeInsets.only(left: 20, bottom: 14),
-          title: TaggedHot(
-              child: Text(
-            'Top Cities',
-            style: headerStyle,
-          )),
-          card: const ImageCard(
-            padding: EdgeInsets.only(right: 14),
-            tag: 'Paris',
+            itemCount: 4,
+            itemBuilder: (buildContext, index) => ImageCard(
+              padding: const EdgeInsets.only(right: 14),
+              tag: cities1[index]['name'] ?? '',
+              image: Image.asset(cities1[index]['image'] ?? ''),
+              onTap: () async {
+                int index = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DetailScreen()));
+                onRequestIndexChange!(index);
+              },
+            ),
           ),
         ),
-      ),
-      const SizedBox(height: 14)
-    ]);
+        const Expanded(
+            flex: 2,
+            child: SizedBox(
+              height: 1,
+            )),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.23,
+          child: HorizontalList(
+              padding: const EdgeInsets.only(left: 30, top: 16),
+              title: Text('Popular Offer', style: headerStyle),
+              itemCount: 4,
+              itemBuilder: (buildContext, index) => OfferCard(
+                    onTap: () async {
+                      int index = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const DetailScreen()));
+                      onRequestIndexChange!(index);
+                    },
+                  )),
+        ),
+        const Expanded(
+            flex: 2,
+            child: SizedBox(
+              height: 1,
+            )),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.19,
+          width: MediaQuery.of(context).size.width,
+          child: HorizontalList(
+            padding: const EdgeInsets.only(left: 30, top: 16),
+            title: TaggedHot(
+                child: Text(
+              'Top Cities',
+              style: headerStyle,
+            )),
+            itemCount: 4,
+            itemBuilder: (buildContext, index) => ImageCard(
+              padding: const EdgeInsets.only(right: 14),
+              tag: cities2[index]['name'] ?? '',
+              image: Image.asset(cities2[index]['image'] ?? ''),
+              onTap: () async {
+                int index = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DetailScreen()));
+                onRequestIndexChange!(index);
+              },
+            ),
+          ),
+        ),
+        const SizedBox(height: 30)
+      ],
+    );
   }
 }

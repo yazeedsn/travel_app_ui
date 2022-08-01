@@ -58,3 +58,63 @@ TextStyle searchBarHintTextStyle = TextStyle(
 
 TextStyle hotelCardSubTextStyle = TextStyle(
     color: secondaryColor, fontSize: 12, fontWeight: FontWeight.normal);
+
+//temp
+const cities1 = [
+  {
+    'name': 'Vienna',
+    'image': 'assets/images/vienna1.png',
+  },
+  {
+    'name': 'Dubai',
+    'image': 'assets/images/dubai.png',
+  },
+  {
+    'name': 'London',
+    'image': 'assets/images/london.png',
+  },
+  {
+    'name': 'Berlin',
+    'image': 'assets/images/berlin.png',
+  },
+];
+
+const cities2 = [
+  {
+    'name': 'Vienna',
+    'image': 'assets/images/vienna2.png',
+  },
+  {
+    'name': 'Venice',
+    'image': 'assets/images/venice.png',
+  },
+  {
+    'name': 'proto',
+    'image': 'assets/images/porto.png',
+  },
+  {
+    'name': 'Berlin',
+    'image': 'assets/images/berlin.png',
+  },
+];
+
+const hotels = [
+  {
+    'name': 'Hilton Thai Hotel',
+    'location': 'Los Angeles, California',
+    'rating': '4.8',
+    'price': '195'
+  },
+  {
+    'name': 'Hilton Thai Hotel',
+    'location': 'Los Angeles, California',
+    'rating': '4.8',
+    'price': '195'
+  },
+  {
+    'name': 'Hilton Thai Hotel',
+    'location': 'Los Angeles, California',
+    'rating': '4.8',
+    'price': '195'
+  }
+];

@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
 class ImageCard extends StatelessWidget {
-  const ImageCard({Key? key, this.padding, this.onTap, required this.tag})
+  const ImageCard(
+      {Key? key,
+      this.padding,
+      this.onTap,
+      required this.tag,
+      required this.image})
       : super(key: key);
 
   final String tag;
   final EdgeInsets? padding;
   final void Function()? onTap;
+  final Image image;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      width: MediaQuery.of(context).size.height * 0.19 * 0.82,
       padding: padding ?? EdgeInsets.zero,
       child: GestureDetector(
         onTap: onTap,
@@ -22,7 +29,7 @@ class ImageCard extends StatelessWidget {
               clipBehavior: Clip.antiAlias,
               child: FittedBox(
                 fit: BoxFit.cover,
-                child: Image.asset('assets/images/vinne.png'),
+                child: image,
               ),
             ),
             Align(

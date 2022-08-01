@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/components/back_navigation_bar.dart';
 import 'package:travel_app/components/shadowed_button.dart';
+import 'package:travel_app/validators.dart';
 import 'package:travel_app/consts.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({Key? key}) : super(key: key);
+  ResetPasswordScreen({Key? key}) : super(key: key);
+
+  final _formKey = GlobalKey<FormFieldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Stack(
         fit: StackFit.expand,
@@ -16,37 +20,44 @@ class ResetPasswordScreen extends StatelessWidget {
           Column(
             children: [
               Expanded(
-                flex: 4,
+                flex: 3,
                 child: Container(
                   padding: const EdgeInsets.only(bottom: 42),
                   alignment: Alignment.bottomCenter,
-                  child: Text('Reset Your Password',
-                      textAlign: TextAlign.center, style: titleTextStyle),
+                  child: Text(
+                    'Reset Your Password',
+                    textAlign: TextAlign.center,
+                    style: titleTextStyle,
+                  ),
                 ),
               ),
               Expanded(
-                flex: 2,
+                flex: 7,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const TextField(
-                        decoration: InputDecoration(hintText: 'Email Address'),
+                      TextFormField(
+                        key: _formKey,
+                        decoration:
+                            const InputDecoration(hintText: 'Email Address'),
+                        validator: (e) => emailValidator(e ?? ''),
                       ),
+                      const SizedBox(height: 26),
                       ShadowedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {}
+                          },
                           child: Text('Reset Your Password'.toUpperCase()))
                     ],
                   ),
                 ),
               ),
-              const Expanded(flex: 5, child: SizedBox(height: 1)),
             ],
           ),
           SafeArea(
-            child: BackNavigationBar(title: '', color: textColor),
+            child: BackNavigationBar(color: textColor),
           )
         ],
       ),

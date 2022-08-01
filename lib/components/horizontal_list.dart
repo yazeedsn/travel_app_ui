@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 
 class HorizontalList extends StatelessWidget {
   const HorizontalList(
-      {Key? key, this.padding, required this.title, required this.card})
+      {Key? key,
+      this.padding,
+      required this.title,
+      required this.itemCount,
+      required this.itemBuilder})
       : super(key: key);
 
-  final Widget title;
-  final Widget card;
   final EdgeInsetsGeometry? padding;
+  final Widget title;
+  final int itemCount;
+  final Widget Function(BuildContext, int) itemBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -15,20 +20,22 @@ class HorizontalList extends StatelessWidget {
       padding: padding ?? EdgeInsets.zero,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           title,
-          const SizedBox(height: 14),
+          const SizedBox(height: 16),
           Expanded(
             child: SizedBox(
               height: 10,
+              width: 1,
               child: ListView.builder(
-                itemCount: 4,
+                itemCount: itemCount,
+                clipBehavior: Clip.none,
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => card,
+                itemBuilder: itemBuilder,
               ),
             ),
-          )
+          ),
+          const SizedBox(height: 4)
         ],
       ),
     );

@@ -19,7 +19,8 @@ class HotelCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 1,
-      margin: const EdgeInsets.symmetric(horizontal: 20),
+      width: 1,
+      margin: const EdgeInsets.symmetric(horizontal: 30),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
           color: Colors.white,
@@ -35,15 +36,14 @@ class HotelCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            flex: 12,
             child: Image.asset(
               'assets/images/welcome.png',
               fit: BoxFit.cover,
             ),
           ),
           Expanded(
-            flex: 10,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding:
