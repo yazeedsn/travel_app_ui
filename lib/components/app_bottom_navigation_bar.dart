@@ -14,7 +14,7 @@ class AppBottomNavigationBar extends StatefulWidget {
 }
 
 class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
-  int currentIndex = 0;
+  late int currentIndex;
 
   @override
   void initState() {
@@ -24,6 +24,7 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
+    currentIndex = widget.currentIndex;
     return Stack(
       children: [
         BottomNavigationBar(

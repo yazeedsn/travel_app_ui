@@ -8,13 +8,12 @@ import 'package:travel_app/components/image_card.dart';
 import 'package:travel_app/screens/details_screen.dart';
 
 class TravelPage extends StatelessWidget {
-  const TravelPage({Key? key, this.onRequestIndexChange}) : super(key: key);
+  TravelPage({Key? key, this.onRequestIndexChange}) : super(key: key);
   final void Function(int)? onRequestIndexChange;
+  final PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
-    final pageController = PageController();
-
     return Column(
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -94,21 +93,33 @@ class PageIndicator extends StatefulWidget {
       : super(key: key);
 
   final int count;
-  final PageController controller;
+  final PageController? controller;
 
   @override
   State<PageIndicator> createState() => _PageIndicatorState();
 }
 
 class _PageIndicatorState extends State<PageIndicator> {
-  int currentIndex = 0;
-  int previousIndex = 0;
+  late int currentIndex;
+  late int previousIndex;
   late List<Widget> children;
-
+  late void Function() listener;
   @override
   void initState() {
     super.initState();
-    currentIndex = widget.controller.initialPage;
+
+    listener = () {
+      if (widget.controller!.page! == widget.controller!.page!.floor()) {
+        setState(() {
+          previousIndex = currentIndex;
+          currentIndex = widget.controller!.page!.floor();
+          children[previousIndex] = _buildInactiveIndicator();
+          children[currentIndex] = _buildActiveIndicator();
+        });
+      }
+    };
+
+    currentIndex = widget.controller!.initialPage;
     previousIndex = currentIndex;
     children = <Widget>[];
     for (int i = 0; i < widget.count; i++) {
@@ -116,16 +127,7 @@ class _PageIndicatorState extends State<PageIndicator> {
           ? _buildActiveIndicator()
           : _buildInactiveIndicator());
     }
-    widget.controller.addListener(() {
-      if (widget.controller.page! == widget.controller.page!.floor()) {
-        setState(() {
-          previousIndex = currentIndex;
-          currentIndex = widget.controller.page!.floor();
-          children[previousIndex] = _buildInactiveIndicator();
-          children[currentIndex] = _buildActiveIndicator();
-        });
-      }
-    });
+    widget.controller!.addListener(listener);
   }
 
   @override
@@ -159,5 +161,11 @@ class _PageIndicatorState extends State<PageIndicator> {
           borderRadius: BorderRadius.circular(100),
           border: Border.all(width: 0.5, color: const Color(0xFF707070))),
     );
+  }
+
+  @override
+  void dispose() {
+    widget.controller!.removeListener(listener);
+    super.dispose();
   }
 }

@@ -14,13 +14,13 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _pageIndex = 0;
+  late int _pageIndex;
   late List<Widget> pages;
 
   @override
   void initState() {
+    _pageIndex = 0;
     changeIndex(int index) => setState(() => _pageIndex = index);
-
     pages = <Widget>[
       TravelPage(onRequestIndexChange: changeIndex),
       FlightsPage(onRequestIndexChange: changeIndex),
@@ -45,5 +45,10 @@ class _MainScreenState extends State<MainScreen> {
       ),
       body: SafeArea(child: pages[_pageIndex]),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
